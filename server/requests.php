@@ -1,31 +1,61 @@
 <?php
 
 
+//session_start();
+
 include("../common/db.php");
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if form fields are set
-    $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
-    $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+if (isset($_POST['signup'])) {
+    // Get form data
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $address = $_POST['address'];
 
-    // Check if the values are empty and provide feedback
-    if (empty($username)) {
-        echo "Name is missing.<br>";
-    } else {
-        echo "Name: " . $username . "<br>";
-    }
+    // Hash password before saving
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if (empty($email)) {
-        echo "Email is missing.<br>";
-    } else {
-        echo "Email: " . $email . "<br>";
-    }
-} else {
-    // Handle the case where the form wasn't submitted
-    echo "Form submission error!";
-}
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("INSERT INTO `users` (`username`, `email`, `password`, `address`) VALUES (?, ?, ?, ?)");
     
-   
+    if ($stmt === false) {
+        die("Error preparing statement: " . $conn->error);
+    }
+
+    // Bind parameters
+    $stmt->bind_param("ssss", $username, $email, $hashed_password, $address);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "New user registered successfully";
+        $_SESSION["user"] = ["username" => $username, "email" => $email];
+    } else {
+        echo "Error inserting data: " . $stmt->error;
+    }
+
+    // Close statement
+    $stmt->close();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

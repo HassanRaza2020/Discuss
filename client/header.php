@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
 
@@ -15,14 +16,18 @@
         <li class="nav-item">
           <a class="nav-link active anchorColor" aria-current="page" href="./">Home</a>
         </li>
+
+        
+
+          <li class="nav-item">
+            <a class="nav-link" href="?login=true">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?signup=true">Sign Up</a>
+          </li>
+        
         <li class="nav-item">
-          <a class="nav-link" href="?login=true">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?signup=true">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Latest Questions</a>
         </li>
       </ul>
     </div>

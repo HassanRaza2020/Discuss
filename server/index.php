@@ -7,11 +7,15 @@
     <?php include('../client/commonFiles.php')?>
     
 </head>
-<body>
-   <?php
+<body>   
+    
+    
+<?php
 
  
 session_start();
+
+ //  include('../common/db.php');
    include('../client/header.php');
 //   include('../client/signup.php');
 
@@ -32,8 +36,7 @@ else
 }
 
 
-
-   ?>
+?>
 
 
 
