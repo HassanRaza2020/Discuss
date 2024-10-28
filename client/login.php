@@ -1,26 +1,30 @@
+<div class="container text-align-center">
+  <h1 class="heading">Login</h1>
 
-<div class="container text-align-center" >
-    <h1 class="heading">Login</h1>
-
-
-    <form class style="margin-top: 80px;" >
-  
+  <form style="margin-top: 80px;" action="../server/requests.php" method="POST">
+    <div class="col-10 offset-sm margin-bottom-15">
+      <label for="email">User Email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        name="email"
+        aria-describedby="emailHelp"
+        placeholder="Enter user email"
+      />
+    </div>
 
     <div class="col-10 offset-sm margin-bottom-15">
-    <label for="email">User Email</label>
-    <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter user name">
-    
+      <label for="password">User Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter user password"
+      />
     </div>
 
-    <div class="col-10 offset-sm  margin-bottom-15">
-    <label for="password">User Password</label>
-    <input type="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter user password ">
-    </div>
-
-  <button type="submit" class="btn-primary">  Login </button>
-</form>
-
-
-
-
-</div>  
+    <button type="submit" class="btn-primary" name="login">Login</button>
+  </form>
+</div>

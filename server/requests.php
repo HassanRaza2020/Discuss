@@ -1,24 +1,19 @@
 <?php
-
-
-//session_start();
-
-include("../common/db.php");
-
+// session_start();
+include "../common/db.php";
 
 if (isset($_POST['signup'])) {
-    // Get form data
+    // Signup code
     $username = $_POST['username'];
-    $email = $_POST['email'];
+    $email    = $_POST['email'];
     $password = $_POST['password'];
-    $address = $_POST['address'];
+    $address  = $_POST['address'];
 
     // Hash password before saving
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare the SQL statement
     $stmt = $conn->prepare("INSERT INTO `users` (`username`, `email`, `password`, `address`) VALUES (?, ?, ?, ?)");
-    
     if ($stmt === false) {
         die("Error preparing statement: " . $conn->error);
     }
@@ -28,34 +23,41 @@ if (isset($_POST['signup'])) {
 
     // Execute the statement
     if ($stmt->execute()) {
-        echo "New user registered successfully";
         $_SESSION["user"] = ["username" => $username, "email" => $email];
-    } else {
-        echo "Error inserting data: " . $stmt->error;
+        header("location: /Discuss/server");
+        exit;
     }
-
-    // Close statement
+    
     $stmt->close();
-
-
-
 }
 
+// Login code
+else if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+    // Prepare the SQL statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `email` = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    // Check if user exists
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
+        // Verify password
+        if (password_verify($password, $user['password'])) {
+            $_SESSION["user"] = ["username" => $user['username'], "email" => $user['email']];
+            header("location: /Discuss/server");
+            exit;
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "User not found.";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $stmt->close();
+}
 ?>
