@@ -12,7 +12,7 @@
     
 <?php
  
-session_start();
+//session_start();
 
 //  include('../common/db.php');
    include('../client/header.php');
@@ -28,6 +28,11 @@ else if (isset($_GET['login'])) {
     include('../client/login.php');
 }
 
+
+else if(isset($_GET['ask'])){
+include('../client/ask.php');
+
+}
 
 else 
 {

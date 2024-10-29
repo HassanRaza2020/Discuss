@@ -1,13 +1,20 @@
 <?php
-// session_start();
+session_start();
+
 include "../common/db.php";
+
+function Error_Message($errorMessage)
+{
+    // Set error message in the session
+    $_SESSION['error_message'] = $errorMessage;
+}
 
 if (isset($_POST['signup'])) {
     // Signup code
     $username = $_POST['username'];
-    $email    = $_POST['email'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
-    $address  = $_POST['address'];
+    $address = $_POST['address'];
 
     // Hash password before saving
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -24,10 +31,10 @@ if (isset($_POST['signup'])) {
     // Execute the statement
     if ($stmt->execute()) {
         $_SESSION["user"] = ["username" => $username, "email" => $email];
-        header("location: /Discuss/server");
+        header("location: /Discuss/server/?login=true");
         exit;
     }
-    
+
     $stmt->close();
 }
 
@@ -52,12 +59,27 @@ else if (isset($_POST['login'])) {
             header("location: /Discuss/server");
             exit;
         } else {
-            echo "Invalid password.";
+            Error_Message("Incorrect Password");
         }
     } else {
-        echo "User not found.";
+        Error_Message("User Not Found");
     }
 
-    $stmt->close();
+    // Redirect to the login page after setting the error message
+    header("location: /Discuss/server/?login=true");
+    exit();
 }
+
+
+  else if (isset($_GET['logout'])) {
+    session_unset();
+    header("location: /Discuss/server/");
+   }
+
+
+ 
+
+
+
+$stmt->close();
 ?>
