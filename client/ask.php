@@ -5,7 +5,7 @@
 
   <form style="margin-top: 80px;" action="../server/requests.php" method="POST">
     <div class="col-10 offset-sm margin-bottom-15">
-      <label for="title">User Email</label>
+      <label for="title">Enter the Question</label>
       <input
         type="text"
         class="form-control"
@@ -23,7 +23,7 @@
         type="text"
         class="form-control"
         id="description"
-        name="title"
+        name="description"
         aria-describedby="emailHelp"
         placeholder="Enter Question" >
 
@@ -35,29 +35,17 @@
 
     <div class="col-10 offset-sm margin-bottom-15">
       <label for="category">Category</label>
-      <select
-        type="text"
-        class="form-control"
-        id="category"
-        name="category"
-        aria-describedby="emailHelp"
-        placeholder="Enter Question"
-        class="form-control"
-      >
+     
+    <?php
+    include("../client/category.php")
+    ?>
 
-      <option value="">Mobiles</option>
-      <option value="">General</option>
-      <option value="">Coding</option>
+
+      </div>
+
     
-    </select>
-    </div>
-
-
-
+    <button type="submit" class="btn-primary" name="ask" >Ask </button>
 
   </form>
 
-    
-    <button type="submit" class="btn-primary" name="ask">Ask</button>
-  </form>
 </div>

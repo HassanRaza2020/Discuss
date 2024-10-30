@@ -19,8 +19,7 @@
 //   include('../client/signup.php');
 
 
-   if (isset($_GET['signup'])) 
-{
+   if (isset($_GET['signup'])) {
     include('../client/signup.php');
 } 
 
@@ -30,7 +29,7 @@ else if (isset($_GET['login'])) {
 
 
 else if(isset($_GET['ask'])){
-include('../client/ask.php');
+    include('../client/ask.php');
 
 }
 

@@ -28,12 +28,17 @@ if (isset($_POST['signup'])) {
     // Bind parameters
     $stmt->bind_param("ssss", $username, $email, $hashed_password, $address);
 
+   
+    $user -> insert_id;
     // Execute the statement
     if ($stmt->execute()) {
         $_SESSION["user"] = ["username" => $username, "email" => $email];
         header("location: /Discuss/server/?login=true");
         exit;
     }
+
+
+
 
     $stmt->close();
 }
@@ -42,6 +47,8 @@ if (isset($_POST['signup'])) {
 else if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    
+  
 
     // Prepare the SQL statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT * FROM `users` WHERE `email` = ?");
@@ -66,6 +73,7 @@ else if (isset($_POST['login'])) {
     }
 
     // Redirect to the login page after setting the error message
+  
     header("location: /Discuss/server/?login=true");
     exit();
 }
@@ -76,10 +84,39 @@ else if (isset($_POST['login'])) {
     header("location: /Discuss/server/");
    }
 
+   else if (isset($_POST["ask"])) {
+   
+
+
+    print_r($_POST);
+    /*$user_id = $_SESSION['user']['email'];   
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $category = $_POST['category'];
+
+    // Prepare the SQL statement 
+    $question = $conn->prepare("INSERT INTO `questions` (`title`, `description`, `category_id`) VALUES ( ?, ?, ?)");
+    if ($question === false) {
+        die("Error preparing statement: " . $conn->error);
+    }
+
+    // Bind parameters
+    $question->bind_param("ssss",$title, $description, $category);
+
+    // Execute the statement
+    if ($question->execute()) {
+        header("Location: /Discuss/server/");
+        exit;
+    } else {
+        echo "Error adding question to the website.";
+    }
+
+    // Close the statement
+    $question->close();
+ */
+   }
+
 
  
-
-
-
-$stmt->close();
+//$stmt->close();
 ?>
