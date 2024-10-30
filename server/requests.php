@@ -44,38 +44,44 @@ if (isset($_POST['signup'])) {
 }
 
 // Login code
-else if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-  
+    else if (isset( $_POST['login'])) {
+        $email =    $_POST['email'];
+        $password = $_POST['password'];
+        $user_id =  $_POST['id'];
+        
+        // Prepare the SQL statement to prevent SQL injection
+        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        // Check if user exists
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+        
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Store user details in session
+                $_SESSION["user"] = [
+                    "username" => $user['username'],
+                    "email" => $user['email'],
+                    "user_id" => $user['id'], // Store the user ID from the database
 
-    // Prepare the SQL statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `email` = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+                ];
+               
 
-    // Check if user exists
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-
-        // Verify password
-        if (password_verify($password, $user['password'])) {
-            $_SESSION["user"] = ["username" => $user['username'], "email" => $user['email']];
-            header("location: /Discuss/server");
-            exit;
+                header("location: /Discuss/server");
+                exit;
+            } else {
+                Error_Message("Incorrect Password");
+            }
         } else {
-            Error_Message("Incorrect Password");
+            Error_Message("User Not Found");
         }
-    } else {
-        Error_Message("User Not Found");
-    }
-
-    // Redirect to the login page after setting the error message
-  
-    header("location: /Discuss/server/?login=true");
-    exit();
+        
+        // Redirect to the login page after setting the error message
+        header("location: /Discuss/server/?login=true");
+        exit();
 }
 
 

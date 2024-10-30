@@ -1,5 +1,18 @@
 <?php
 session_start();
+
+// Check if the session variable 'user' is set
+if (isset($_SESSION['user'])) {
+    // Display session variables
+    echo "<pre>"; // Format the output
+    print_r($_SESSION['user']);
+    echo "</pre>";
+} else {
+    echo "No user is logged in.";
+}
+
+
+
 ?>
 
 <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' chrome-extension://c396d347-023a-4f99-a045-d63d8f281cbb;">
@@ -31,24 +44,26 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="?ask=true" >Ask A Question </a>
           </li>
-          
+
 
         <?php else: ?>
           <!-- Show login and signup when logged out -->
           <li class="nav-item">
             <a class="nav-link" href="?login=true">Login</a>
           </li>
+
+          
           <li class="nav-item">
             <a class="nav-link" href="?signup=true">SignUp</a>
           </li>
-        <?php endif; ?>
+        <?php endif;?>
 
         <li class="nav-item">
           <a class="nav-link" href="?latest=true">Latest Questions</a>
         </li>
       </ul>
     </div>
-    
+
     <form class="d-flex" action="search.php" method="get">
       <input class="form-control me-2" name="search" type="search" placeholder="Search questions">
       <button class="btn btn-outline-success"  type="submit">Search</button>
