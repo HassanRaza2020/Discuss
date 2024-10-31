@@ -2,15 +2,6 @@
 session_start();
 
 // Check if the session variable 'user' is set
-if (isset($_SESSION['user'])) {
-    // Display session variables
-    echo "<pre>"; // Format the output
-    print_r($_SESSION['user']);
-    echo "</pre>";
-} else {
-    echo "No user is logged in.";
-}
-
 
 
 ?>

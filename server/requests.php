@@ -70,7 +70,7 @@ if (isset($_POST['signup'])) {
                 ];
                
 
-                header("location: /Discuss/server");
+            header("location: /Discuss/server");
                 exit;
             } else {
                 Error_Message("Incorrect Password");
@@ -85,33 +85,40 @@ if (isset($_POST['signup'])) {
 }
 
 
-  else if (isset($_GET['logout'])) {
+  else if (isset($_GET['logout'])) 
+  {
     session_unset();
     header("location: /Discuss/server/");
    }
 
-   else if (isset($_POST["ask"])) {
+   else if (isset($_POST["ask"])) 
+   {
    
 
-
-    print_r($_POST);
-    /*$user_id = $_SESSION['user']['email'];   
+    //print_r($_POST);
+    $user_id = $_SESSION['user']['user_id'];   
     $title = $_POST['title'];
     $description = $_POST['description'];
     $category = $_POST['category'];
 
     // Prepare the SQL statement 
-    $question = $conn->prepare("INSERT INTO `questions` (`title`, `description`, `category_id`) VALUES ( ?, ?, ?)");
+    $question = $conn->prepare("INSERT INTO `questions` (`title`, `description`, `category_id`,`user_id`) 
+    VALUES ( ?, ?, ?,?)");
     if ($question === false) {
         die("Error preparing statement: " . $conn->error);
     }
 
     // Bind parameters
-    $question->bind_param("ssss",$title, $description, $category);
+    $question->bind_param("ssss",$title, $description, $category,$user_id);
+    
+    
+    
 
     // Execute the statement
     if ($question->execute()) {
         header("Location: /Discuss/server/");
+        
+
         exit;
     } else {
         echo "Error adding question to the website.";
@@ -119,7 +126,7 @@ if (isset($_POST['signup'])) {
 
     // Close the statement
     $question->close();
- */
+ 
    }
 
 

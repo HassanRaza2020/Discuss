@@ -1,5 +1,5 @@
 <select class="form-control" name="category" id="category">
-    <option value="">Select A Category</option>
+    <option value="" disabled selected> Select A Category</option>
     <?php 
     include("../common/db.php");
     $query = "SELECT * FROM category";

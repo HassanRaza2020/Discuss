@@ -6,11 +6,19 @@ img
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a{
+
+.navbar 
+{
+  padding: 0.5rem 1rem; /* Adjust top/bottom padding */
+  height: 90px; /* Set a specific height */
+}
+
+
+ .navbar a{
   color: red !important;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 40px;
-  font-weight: bold;
+  font-weight:lighter;
 }
 
 .margin-bottom-15{
@@ -60,3 +68,23 @@ h1.italic {
   select{
    border-radius: 10px;
   }
+
+  .question-list
+  { 
+    border: 1px solid #ddd ;
+    padding: 15px;  
+    margin: 10px;
+    border-radius: 10px ;
+  }
+
+  
+  .question-list a 
+{
+  font-size: 16px; 
+  text-decoration: none; 
+  
+}
+
+div.question-list a {
+  color: rgb(0, 0, 0); /* Desired color */
+}
