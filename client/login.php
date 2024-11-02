@@ -3,7 +3,7 @@
 
   <form style="margin-top: 80px;" action="../server/requests.php" method="POST">
     <div class="col-10 offset-sm margin-bottom-15">
-      <label for="email">User Email</label>
+      <label fo r="email">User Email</label>
       <input
         type="text"
         class="form-control"

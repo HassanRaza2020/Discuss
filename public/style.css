@@ -47,11 +47,6 @@ font-size: 16px;
 }
 
 
-input[type=text], [type=password] {
-  width: 80%;
-  border-radius: 10px;
- 
-}
 
 h1{
   color: red;
@@ -88,3 +83,47 @@ h1.italic {
 div.question-list a {
   color: rgb(0, 0, 0); /* Desired color */
 }
+
+.btn-answer
+{
+  color: white; 
+  position: absolute;
+  top: 290px;
+  left: 120px;
+  background: red;
+  border-color: white;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 30px;
+ 
+  
+}
+
+.form-control{
+
+width: 70%;
+border-radius: 10px;
+margin-top: 20px;
+
+}
+
+.form-control-nav
+{
+  margin-right: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd 
+}
+
+.btn-outline-success
+{
+  background: red;
+  border-color: white;
+  width: 90px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 14px;
+  color:aliceblue;
+}
+

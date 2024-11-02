@@ -20,6 +20,8 @@
                 $description = htmlspecialchars($row['description']);          
                 echo "<h4>".$title."</h4>";
                 echo "<p>".$description."</p>";
+                
+
             } else {
                 echo "<p>No question found.</p>";
             }
@@ -27,10 +29,37 @@
             echo "<p>Error executing query.</p>";
         }
 
+
+
+
         // Close the statement
         $stmt->close();
-    } else {
-        echo "<p>Invalid question ID.</p>";
+    } else 
+    {
+        echo "<p>Invalid question `ID.</p>";
     }
+
+
     ?>
+    
+
+
+<form action="../server/requests.php" method="POST">
+
+<!-- Hidden input field to pass the 'id' value -->
+<input type="hidden" name="id" value="<?php echo $_GET['q'] ?? ''; ?>">
+
+<!-- Textarea for the user's answer -->
+<textarea placeholder="Your answer..." class="form-control" name="textarea"></textarea>
+
+<!-- Submit button -->
+<button class="btn-answer" name="answer">Answer</button>
+</form>
+
+
+
+
+
+
 </div>
+

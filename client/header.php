@@ -8,11 +8,16 @@ session_start();
 
 <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' chrome-extension://c396d347-023a-4f99-a045-d63d8f281cbb;">
 
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
 
+
+  
     <a class="navbar-brand" href="#">
-      <img src="https://cdn.pixabay.com/photo/2022/09/08/13/59/youtube-7441044_1280.png" alt="Brand Logo">
+      <img src="https://cdn.pixabay.com/photo/2012/04/02/16/13/question-24851_640.png" alt="Brand Logo">
     </a>
 
     <!-- Button for toggling the navbar in mobile view -->
@@ -56,8 +61,8 @@ session_start();
     </div>
 
     <form class="d-flex" action="search.php" method="get">
-      <input class="form-control me-2" name="search" type="search" placeholder="Search questions">
-      <button class="btn btn-outline-success"  type="submit">Search</button>
+      <input class="form-control-nav" name="search" type="search" placeholder="Search questions">
+      <button class="btn-outline-success"  type="submit">Search</button>
     </form>
   </div>
 </nav>

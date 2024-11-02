@@ -33,12 +33,22 @@ else if (isset($_GET['login']))
 else if(isset($_GET['ask']))
 {
     include('../client/ask.php');
+    //include('../client/ask.php');
+
 }
 
 
-else if(isset($_GET['q']))
-{
+
+
+else if(isset($_GET['q'])){
+
+   
     include('../client/question-details.php');
+   
+    include('../client/answers.php');
+    
+    
+
 }
 
 
