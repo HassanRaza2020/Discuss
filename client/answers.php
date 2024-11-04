@@ -1,6 +1,6 @@
 
 <div class="answer-div">
-<h3 class="answers"> Answers</h3>
+
 
 <?php
 
@@ -21,7 +21,8 @@ if ($id) {
             
             $answers = htmlspecialchars($row['answer']);  // Protect against XSS
             $name = htmlspecialchars($row['username']);
-           
+            
+            echo "<h3 class='answers'> Answers</h3>";
             echo "<div class='answer-list'>
             <h6>$name</h6>
             $answers
