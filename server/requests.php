@@ -120,39 +120,39 @@ else if (isset($_POST["ask"])) {
 }
 
 
- else if (isset($_POST['answer'])) 
- {
-  //  print_r($_POST);
-   
+    else if (isset($_POST['answer'])) 
+    {
+    //  print_r($_POST);
+    
 
-    $user_id = $_SESSION['user']['user_id'];
-    $username = $_SESSION['user']['username'];
-    $answerText = $_POST['textarea']; // Renamed to avoid conflict
-    $question_id = $_POST['id'];
+        $user_id = $_SESSION['user']['user_id'];
+        $username = $_SESSION['user']['username'];
+        $answerText = $_POST['textarea']; // Renamed to avoid conflict
+        $question_id = $_POST['id'];
 
 
-    // Prepare the SQL statement
-    $stmt = $conn->prepare("INSERT INTO `answers` (`user_id`, `question_id`, `username`, `answer`) VALUES (?, ?, ?, ?)");
-    if ($stmt === false) {
-        die("Error preparing statement: " . $conn->error);
+        // Prepare the SQL statement
+        $stmt = $conn->prepare("INSERT INTO `answers` (`user_id`, `question_id`, `username`, `answer`) VALUES (?, ?, ?, ?)");
+        if ($stmt === false) {
+            die("Error preparing statement: " . $conn->error);
+        }
+        
+        // Bind parameters
+        $stmt->bind_param("ssss", $user_id, $question_id, $username, $answerText);
+        
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Answer has been added!";
+        } else {
+            echo "Error adding question to the website.";
+        }
+        
+        // Close the statement
+        $stmt->close();
+    
+
+
     }
-    
-    // Bind parameters
-    $stmt->bind_param("ssss", $user_id, $question_id, $username, $answerText);
-    
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Answer has been added!";
-    } else {
-        echo "Error adding question to the website.";
-    }
-    
-    // Close the statement
-    $stmt->close();
-  
-
-
- }
 
 
 
