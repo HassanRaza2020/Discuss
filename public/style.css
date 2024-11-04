@@ -35,7 +35,7 @@ img {
   border-radius: 20px;
   font-size: 16px;
   position: absolute;
-  left: 15px; /* Align to the left side of the page */
+  left: 120px; /* Align to the left side of the page */
 }
 
 .btn-primary:hover {

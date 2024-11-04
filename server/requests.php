@@ -142,7 +142,8 @@ else if (isset($_POST["ask"])) {
         
         // Execute the statement
         if ($stmt->execute()) {
-            echo "Answer has been added!";
+            
+            header("Location: http://localhost/Discuss/server/?q=$question_id");
         } else {
             echo "Error adding question to the website.";
         }

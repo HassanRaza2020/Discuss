@@ -1,20 +1,12 @@
 <?php
 session_start();
-
 // Check if the session variable 'user' is set
-
-
 ?>
 
 <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' chrome-extension://c396d347-023a-4f99-a045-d63d8f281cbb;">
 
-
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-
-
   
     <a class="navbar-brand" href="#">
       <img src="https://cdn.pixabay.com/photo/2012/04/02/16/13/question-24851_640.png" alt="Brand Logo">
@@ -60,9 +52,9 @@ session_start();
       </ul>
     </div>
 
-    <form class="d-flex" action="search.php" method="get">
-      <input class="form-control-nav" name="search" type="search" placeholder="Search questions">
-      <button class="btn-outline-success"  type="submit">Search</button>
+    <form class="d-flex" action="?latest=true" method="GET">
+      <input class="form-control-nav" name="search_bar" type="search" placeholder="Search questions">
+      <button class="btn-outline-success" name="search"  type="submit">Search</button>
     </form>
   </div>
 </nav>
