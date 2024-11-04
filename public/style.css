@@ -127,3 +127,33 @@ margin-top: 20px;
   color:aliceblue;
 }
 
+.answer-div{
+  margin-top: 100px;
+  left: 50px;
+  position: absolute;
+  width: 60%;
+
+}
+
+.answers{
+  position: relative;
+  left: 7px;
+  font-family: cursive;
+  color: red;
+
+}
+
+.answer-list{
+  border: 1px solid #ddd ;
+  padding: 15px;  
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+
+.question-title{
+  font-family: cursive;
+  color: red;
+
+
+}

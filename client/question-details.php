@@ -18,7 +18,7 @@
                 $row = $result->fetch_assoc();
                 $title = htmlspecialchars($row['title']); // Protect against XSS
                 $description = htmlspecialchars($row['description']);          
-                echo "<h4>".$title."</h4>";
+                echo "<h4 class='question-title'>".$title."</h4>";
                 echo "<p>".$description."</p>";
                 
 
@@ -55,9 +55,6 @@
 <!-- Submit button -->
 <button class="btn-answer" name="answer">Answer</button>
 </form>
-
-
-
 
 
 

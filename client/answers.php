@@ -1,26 +1,13 @@
 
-<div class="ans" name="ans">
-<h1 class="answers"> Answers</h1>
+<div class="answer-div">
+<h3 class="answers"> Answers</h3>
 
 <?php
 
 include('../common/db.php');
 
 $id = $_GET['q'] ?? null;  // Fetch the question ID from the URL
-/*
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-echo $id."<br>";
-*/
+
 
 if ($id) {
     // Use a prepared statement to avoid SQL injection
